@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
-
-// import { Container } from './styles';
+import React, { useState, useEffect } from "react";
 
 function TechList() {
   const [techs, setTechs] = useState([]);
-  const [newTech, setNewTech] = useState([]);
+  const [newTech, setNewTech] = useState("");
+
+  //supostos component didMount fake
+  useEffect(() => {
+    const techs = localStorage.getItem("techs");
+
+    if (techs) {
+      setTechs(JSON.parse(techs));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("techs", JSON.stringify(techs));
+  }, [techs]);
 
   function handleAddTech() {
     setTechs([...techs, newTech]);
-    setNewTech('');
+    setNewTech("");
   }
 
   return (
