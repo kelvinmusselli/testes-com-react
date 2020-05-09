@@ -11,34 +11,27 @@ describe("TechList component", () => {
     const { getByTestId, debug, getByText, getByLabelText } = render(
       <TechList />
     );
-
     fireEvent.change(getByLabelText("Tech"), { target: { value: "Node.js" } });
-
     fireEvent.submit(getByTestId("tech-form"));
-
-    //fireEvent.click(getByText("Adicionar"));
-
     expect(getByTestId("tech-list")).toContainElement(getByText("Node.js"));
-
     expect(getByLabelText("Tech")).toHaveValue("");
   });
 
   it("should store techs in storage", () => {
-    let { getByText, getByTestId, debug, getByLabelText } = render(
+    let { getByText, getByTestId, getByLabelText, debug } = render(
       <TechList />
     );
     fireEvent.change(getByLabelText("Tech"), { target: { value: "Node.js" } });
-
     fireEvent.submit(getByTestId("tech-form"));
+
+    // aqui deveria executar o cleanup
     cleanup();
 
-    ({ getByText, getByTestId, debug, getByLabelText } = render(<TechList />));
-
+    ({ getByText, getByTestId, getByLabelText } = render(<TechList />));
     expect(localStorage.setItem).toHaveBeenCalledWith(
       "techs",
       JSON.stringify(["Node.js"])
     );
-    debug();
-    // expect(getByTestId("tech-list")).toContainElement(getByText("Node.js"));
+    expect(getByTestId("tech-list")).toContainElement(getByText("Node.js"));
   });
 });

@@ -1,27 +1,22 @@
 import React, { useState, useEffect } from "react";
 
-function TechList() {
+const TechList = () => {
   const [techs, setTechs] = useState([]);
   const [newTech, setNewTech] = useState("");
-
   //supostos component didMount fake
   useEffect(() => {
     const techs = localStorage.getItem("techs");
-
     if (techs) {
       setTechs(JSON.parse(techs));
     }
   }, []);
-
   useEffect(() => {
     localStorage.setItem("techs", JSON.stringify(techs));
   }, [techs]);
-
   function handleAddTech() {
     setTechs([...techs, newTech]);
     setNewTech("");
   }
-
   return (
     <>
       <form data-testid="tech-form" onSubmit={handleAddTech}>
@@ -40,6 +35,6 @@ function TechList() {
       </form>
     </>
   );
-}
+};
 
 export default TechList;
