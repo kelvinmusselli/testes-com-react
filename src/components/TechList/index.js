@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addTech } from "../../store/modules/techs/actions";
 
 const TechList = () => {
-  const [techs, setTechs] = useState([]);
   const [newTech, setNewTech] = useState("");
-  //supostos component didMount fake
-  useEffect(() => {
-    const techs = localStorage.getItem("techs");
-    if (techs) {
-      setTechs(JSON.parse(techs));
-    }
-  }, []);
-  useEffect(() => {
-    localStorage.setItem("techs", JSON.stringify(techs));
-  }, [techs]);
+
+  const dispatch = useDispatch();
+  const techs = useSelector((state) => state.techs);
+
   function handleAddTech() {
-    setTechs([...techs, newTech]);
+    dispatch(addTech(newTech));
     setNewTech("");
   }
   return (
