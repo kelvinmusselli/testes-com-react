@@ -4,6 +4,7 @@ import App from '~/App';
 
 it('renders without crashing', () => {
   const { debug, getAllByTestId } = render(<App />);
+
   expect(getAllByTestId('app-render'));
   debug();
 });
