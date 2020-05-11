@@ -22,12 +22,16 @@ const TechList = () => {
         </ul>
         <label htmlFor="tech">Tech</label>
         <input
+          data-testid="input-tech"
           id="tech"
           value={newTech}
           onChange={(e) => setNewTech(e.target.value)}
         />
         <button onClick={handleAddTech}>Adicionar</button>
       </form>
+      <button data-testid="btn-handle">
+        Start <i>&nbsp; > &nbsp;</i>
+      </button>
     </>
   );
 };
