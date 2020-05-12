@@ -4,7 +4,6 @@ import { addTech } from '../../store/modules/techs/actions';
 
 const TechList = () => {
   const [newTech, setNewTech] = useState('');
-
   const dispatch = useDispatch();
   const techs = useSelector((state) => state.techs);
 
@@ -29,9 +28,6 @@ const TechList = () => {
         />
         <button onClick={handleAddTech}>Adicionar</button>
       </form>
-      <button data-testid="btn-handle">
-        Start <i>&nbsp; > &nbsp;</i>
-      </button>
     </>
   );
 };

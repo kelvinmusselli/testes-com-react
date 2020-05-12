@@ -41,10 +41,4 @@ describe('TechList component', () => {
 
     expect(dispatch).toHaveBeenCalledWith(addTech('Node.js'));
   });
-
-  it('should be able verify if button is ok', () => {
-    const { getByTestId, debug } = render(<TechList />);
-
-    fireEvent.click(getByTestId('btn-handle'));
-  });
 });
