@@ -4,3 +4,16 @@ export function addTech(tech) {
     payload: { tech },
   };
 }
+
+export function getTechSuccess(data) {
+  return {
+    type: 'GET_TECHS_SUCCESS',
+    payload: { data },
+  };
+}
+
+export function getTechFailure() {
+  return {
+    type: 'GET_TECHS_FAILURE',
+  };
+}
