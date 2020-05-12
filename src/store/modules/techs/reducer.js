@@ -6,7 +6,9 @@ export default function techs(state = INITIAL_STATE, action) {
   return produce(state, (draft) => {
     switch (action.type) {
       case 'ADD_TECH':
-        draft.push(action);
+        draft.push(action.payload.tech);
+        break;
+      default:
         break;
     }
   });
